@@ -1,6 +1,5 @@
 language:
   - php
-  - npm
 services: docker
 before_install:
   # Strips out dashes in organization names because they are not allowed in dockerhub
@@ -9,9 +8,6 @@ before_install:
   # Upgrade docker/docker-compose
   - docker -v
   - cp .env.example .env
-  # Hercule for apib transclusion
-  - npm install -g hercule
-  - hercule resources/docs/api-documentation.apib -o resources/docs/hercule.apib
   # Stop the postgres instance travis sets up automatically
   - sudo /etc/init.d/postgresql stop
   # set env vars in the build settings to interact with repositories
