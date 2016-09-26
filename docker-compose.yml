@@ -33,13 +33,3 @@ services:
     image: realpage/dredd:1.0
     volumes_from:
       - fpm
-  cli:
-    build:
-      context: .
-      dockerfile: infrastructure/cli/Dockerfile
-    image: realpage/lumen-starter:cli
-    env_file: .env
-    volumes:
-      - ./:/var/www/html
-    command: crond -f -d 8
-
