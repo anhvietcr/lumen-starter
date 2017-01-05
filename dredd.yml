@@ -30,4 +30,4 @@ hooks-worker-term-retry: 500
 hooks-worker-handler-host: localhost
 hooks-worker-handler-port: 61321
 blueprint: resources/docs/hercule.apib
-endpoint: 'http://192.168.99.100/api/v1'
+endpoint: 'http://web/api/v1'

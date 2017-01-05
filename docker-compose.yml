@@ -9,18 +9,21 @@ services:
     env_file: .env
     volumes:
       - ./:/var/www/html
+    links:
+      - db
   web:
     build:
       context: .
       dockerfile: infrastructure/nginx/Dockerfile
     image: realpage/lumen-starter:nginx
-    env_file: .env
     volumes:
       - ./infrastructure/nginx:/etc/nginx/conf.d
       - ./resources:/var/www/html/resources
       - ./public:/var/www/html/public
     ports:
       - "80:80"
+    links:
+      - fpm
   db:
     image: postgres:9.5
     ports:
@@ -30,6 +33,16 @@ services:
       POSTGRES_PASSWORD: P@ssw0rd
       POSTGRES_DB: service_db
   dredd:
-    image: realpage/dredd:1.0
+    image: realpage/dredd:2.2
     volumes_from:
       - fpm
+    links:
+      - web
+  hercule:
+    image: realpage/hercule:latest
+    volumes_from:
+      - web
+  aglio:
+    image: realpage/aglio:latest
+    volumes_from:
+      - web

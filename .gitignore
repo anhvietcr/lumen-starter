@@ -1,4 +1,5 @@
 /vendor
-infrastructure/nginx/default.conf
 .env
 .idea
+resources/docs/hercule.apib
+resources/docs/hercule.apib.map
