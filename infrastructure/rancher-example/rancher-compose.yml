@@ -2,6 +2,8 @@ db:
   scale: 1
 queue:
   scale: 1
+cron:
+  scale: 1
 redis:
   scale: 1
 migrations:

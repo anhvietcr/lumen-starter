@@ -10,6 +10,28 @@ db:
   log_opt: {}
   image: postgres:9.6
   stdin_open: true
+cron:
+  image: realpage/lumen-starter:cli.staging.[HASH]
+    environment:
+      APP_ENV: staging
+      APP_KEY: [KEY]
+      APP_URL: http://www.mydomain.com
+      CACHE_DRIVER: redis
+      QUEUE_DRIVER: redis
+      DB_DATABASE: my_app
+      DB_USERNAME: my_app
+      DB_PASSWORD: changeme
+    stdin_open: true
+    tty: true
+    links:
+    - database:database
+    command:
+    - crond
+    - -f
+    - -d
+    - '8'
+    labels:
+      io.rancher.container.pull_image: always
 redis:
   labels:
     io.rancher.container.pull_image: always
