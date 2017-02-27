@@ -1,7 +1,4 @@
-FROM realpage/php:7.0-fpm-alpine
-LABEL application="lumen" \
-      com.realpage.php.version="7.0" \
-      com.realpage.php.type="fpm"
+FROM realpage/php:7.1-fpm-alpine
 
 # Copy the application files to the container
 ADD . /var/www/html
@@ -30,4 +27,4 @@ RUN composer global require hirak/prestissimo \
 USER root
 
 # Remove composer installation dependencies
-RUN apk del libmcrypt git zip unzip
+RUN apk del git zip unzip

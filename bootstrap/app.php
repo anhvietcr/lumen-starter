@@ -67,7 +67,9 @@ $app->singleton(
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
-$app->routeMiddleware(['jsonApi.enforceMediaType' => RealPage\JsonApi\Lumen\EnforceMediaType::class]);
+$app->routeMiddleware([
+    'jsonApi.enforceMediaType' => \RealPage\JsonApi\Middleware\EnforceMediaType::class
+]);
 
 /*
 |--------------------------------------------------------------------------

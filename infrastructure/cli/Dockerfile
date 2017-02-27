@@ -1,9 +1,6 @@
 # This container should be used for any/all CLI processes
 # including cron, queues, etc.
-FROM realpage/php:7.0-alpine
-LABEL application="lumen" \
-      com.realpage.php.version="7.0" \
-      com.realpage.php.type="cli"
+FROM realpage/php:7.1-alpine
 
 # Copy the application files to the container
 ADD . /var/www/html
