@@ -14,6 +14,7 @@ This [Laravel Lumen](https://lumen.laravel.com) starter template is intended to 
 > For details on how to contribute to this repo, please check out the [contributing guide](https://github.com/realpage/lumen-starter/blob/master/CONTRIBUTING.md).
 
 <a name="whats-included" />
+
 ### What's Included
 
  * Latest version of Lumen.
@@ -27,6 +28,7 @@ This [Laravel Lumen](https://lumen.laravel.com) starter template is intended to 
  * [Example configuration](infrastructure/rancher-example/README.md) for deploying to [Rancher](http://rancher.com).
 
 <a name="using-this-repo" />
+
 ### Using This Repository
 
 We recommend [watching this repository](https://help.github.com/articles/watching-repositories/) so you can apply updates made to this project to yours.
@@ -57,6 +59,7 @@ Configure the following environment variables:
 This user needs to have permission to write to the DockerHub repository so that it can push images.
 
 <a name="testing" />
+
 ### Testing
 
  * [Dredd support](https://github.com/apiaryio/dredd) for ensuring accurate API documentation.  Can also be considered as acceptance tests
@@ -65,9 +68,11 @@ This user needs to have permission to write to the DockerHub repository so that 
 For more on testing, please see: [Testing in the Lumen Starter](https://www.youtube.com/watch?v=BPX792GtcbE) on YouTube.
 
 <a name="faq" />
+
 ### FAQ
 
 <a name="use-mysql" />
+
 ##### **How can I use MySQL?**
    * Set the `DB_CONNECTION` environment variable to `mysql`
    * Update the fpm/cli docker containers to `apt-get install php7.0-mysql`
@@ -75,11 +80,3 @@ For more on testing, please see: [Testing in the Lumen Starter](https://www.yout
 ##### **How do I update my nginx config?**
    * the `default.conf` file located in the `infrastructure/nginx` directory will be added to the nginx container as part of the build
    * update the file and rebuild the container via `docker-compose build` to propagate the changes
-
-##### **Is there a shortcut for running commands within specific containers?**
-
-Yes!  [Using an alias](http://askubuntu.com/a/17537/132639) below, you can run commands in containers with `dockerexc fpm php -v` instead of `docker exec -it $(docker ps -f name=fpm -q) php -v`.
-
-```
-alias dockerexc='function _docker_exec(){ service=$1; shift; docker exec -it $(docker-compose ps -q ${service}) "$@" };_docker_exec'
-```
